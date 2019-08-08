@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">@color/blockbusterBlue</color>
+    <color name="colorPrimaryDark">#003366</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="blockbusterBlue">#1030AD</color>
+    <color name="blockbusterYellow">#f9f701</color>
 </resources>
