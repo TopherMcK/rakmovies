@@ -1,0 +1,15 @@
+ext {
+    // Android versions
+    androidxVersion = '1.0.2'
+    androidArchVersion = '1.1.1'
+
+    // Misc
+    koinVersion = '2.0.0-GA2'
+    timberVersion = '4.7.1'
+
+    // Tests
+    androidxTestVersion = '1.1.2-alpha01'
+    esspressoCoreVersion = '3.3.0-alpha01'
+    mockitoCoreVersion = '2.28.2'
+    robolectricVersion = '4.3'
+}
