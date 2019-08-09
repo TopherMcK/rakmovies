@@ -1,0 +1,8 @@
+import com.learning.ramovies.login.di.loginModule
+import com.learning.ramovies.main.di.mainModule
+import org.koin.core.module.Module
+
+val modulesList: List<Module> = listOf(
+    loginModule,
+    mainModule
+)

@@ -2,6 +2,9 @@ package com.learning.ramovies
 
 import android.app.Application
 import android.content.Context
+import com.learning.ramovies.di.appModule
+import com.learning.ramovies.login.di.loginModule
+import com.learning.ramovies.main.di.mainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext
 import org.koin.core.context.startKoin
@@ -18,11 +21,15 @@ class RamoviesApp : Application() {
 
             startKoin {
                 modules(
-                    listOf()
+                    listOf(
+                        loginModule,
+                        mainModule,
+                        appModule
+                    )
                 ).androidContext(appContext)
             }
 
-            Timber.plant(Timber.DebugTree())
         }
+        Timber.plant(Timber.DebugTree())
     }
 }

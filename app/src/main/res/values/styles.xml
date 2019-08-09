@@ -16,4 +16,14 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- LoginActivity -->
+    <style name="LoginTitle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/grayText</item>
+        <item name="android:textSize">60sp</item>
+    </style>
+    <style name="LoginTV" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/grayText</item>
+        <item name="android:textSize">30sp</item>
+    </style>
 </resources>

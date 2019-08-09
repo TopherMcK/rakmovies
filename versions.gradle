@@ -1,5 +1,5 @@
 ext {
-    // Android versions
+    // Android
     androidxVersion = '1.0.2'
     androidArchVersion = '1.1.1'
 

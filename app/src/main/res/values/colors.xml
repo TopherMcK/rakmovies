@@ -6,4 +6,14 @@
 
     <color name="blockbusterBlue">#1030AD</color>
     <color name="blockbusterYellow">#f9f701</color>
+
+
+    <color name="ltBlue">#2979FF</color>
+    <color name="ltGray">#d3d3d3</color>
+
+    <!-- Buttons -->
+    <color name="enabledBtn">@color/ltBlue</color>
+    <color name="disabledBtn">@color/ltGray</color>
+
+    <color name="grayText">#616161</color>
 </resources>

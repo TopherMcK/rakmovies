@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ramovies</string>
+    <string name="app_name">rakmovies</string>
     <string name="nav_header_desc">This is a navbar</string>
 
     <!-- drawer -->
@@ -9,5 +9,16 @@
 
     <!-- default strings -->
     <string name="default_username">Guest</string>
-    <string name="default_return_to_login_txt">Log In</string>
+    <string name="default_return_to_login_txt">@string/sign_in</string>
+
+    <!-- shared -->
+    <string name="sign_in">Sign In</string>
+    <string name="sign_out">Sign Out</string>
+
+    <!-- LoginActivity -->
+    <string name="or">- or -</string>
+    <string name="skip">Skip</string>
+    <string name="username">User Name</string>
+    <string name="password">Password</string>
+
 </resources>
