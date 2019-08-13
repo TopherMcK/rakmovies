@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView
 import com.learning.ramovies.R
 import com.learning.ramovies.login.LoginActivity
 import com.learning.ramovies.main.MainActivity
+import kotlinx.android.synthetic.main.app_bar_layout.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.apache.commons.lang3.StringUtils
 import timber.log.Timber
@@ -66,8 +67,8 @@ abstract class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationIte
     }
 
     protected fun updateToolbarTitle(title: String?) {
-        if(toolbar != null && title != null) {
-            toolbar.title = title
+        if(StringUtils.isNotEmpty(title)) {
+            nav_title_tv.text = title
         }
     }
 
