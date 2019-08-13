@@ -1,14 +1,17 @@
 package com.learning.ramovies.base
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -17,6 +20,9 @@ import com.learning.ramovies.R
 import com.learning.ramovies.login.LoginActivity
 import com.learning.ramovies.main.MainActivity
 import kotlinx.android.synthetic.main.app_bar_main.*
+import org.apache.commons.lang3.StringUtils
+import timber.log.Timber
+
 
 abstract class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var menu: Menu
@@ -25,22 +31,37 @@ abstract class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationIte
         super.onCreate(savedInstanceState)
         setContentView(layoutRes())
 
+        updatedNavBar()
+    }
+
+    private fun updatedNavBar() {
         if(shouldUseNav()) {
             val toolBar = findViewById<Toolbar>(R.id.toolbar)
-            toolBar.title = this.getString(R.string.default_username)
+            toolBar.title = StringUtils.EMPTY
 
             setSupportActionBar(toolBar)
             val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
             val navView = findViewById<NavigationView>(R.id.nav_view)
 
-//            val toggle = ActionBarDrawerToggle(
-//                this, drawerLayout, toolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
-//            )
-
-//            drawerLayout.addDrawerListener(toggle)
-//            toggle.syncState()
-
+            val hamburger = toolBar.findViewById<ImageButton>(R.id.hamburgerBtn)
             navView.setNavigationItemSelectedListener(this)
+            hamburger.setOnClickListener {
+                drawerLayout.openDrawer(navView)
+            }
+
+            val searchView = findViewById<SearchView>(R.id.searchView)
+            searchView.findViewById<ImageView>(R.id.search_button).setColorFilter(Color.WHITE)
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String): Boolean {
+                    Timber.d("TODO")
+                    return false
+                }
+            })
         }
     }
 
@@ -51,7 +72,7 @@ abstract class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationIte
     }
 
     protected fun updateMenu(title: String?, isGuest: Boolean) {
-        if(!isGuest && title != null && menu != null) {
+        if(!isGuest) {
             currentActivity().findViewById<TextView>(R.id.header_title).text = title
             menu.findItem(R.id.return_to_login).title = this.getString(R.string.sign_out)
         }
@@ -59,13 +80,11 @@ abstract class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationIte
 
     override fun onBackPressed() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        if(drawerLayout != null) {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START)
             } else {
                 super.onBackPressed()
             }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
