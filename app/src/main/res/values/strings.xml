@@ -10,6 +10,7 @@
     <!-- default strings -->
     <string name="default_username">Guest</string>
     <string name="default_return_to_login_txt">@string/sign_in</string>
+    <string name="brand">Blockbuster</string>
 
     <!-- shared -->
     <string name="sign_in">Sign In</string>

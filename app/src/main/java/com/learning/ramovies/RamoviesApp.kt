@@ -2,7 +2,6 @@ package com.learning.ramovies
 
 import android.app.Application
 import android.content.Context
-import com.learning.ramovies.di.appModule
 import com.learning.ramovies.login.di.loginModule
 import com.learning.ramovies.main.di.mainModule
 import org.koin.android.ext.koin.androidContext
@@ -23,8 +22,7 @@ class RamoviesApp : Application() {
                 modules(
                     listOf(
                         loginModule,
-                        mainModule,
-                        appModule
+                        mainModule
                     )
                 ).androidContext(appContext)
             }

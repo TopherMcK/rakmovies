@@ -2,11 +2,10 @@ package com.learning.ramovies.base
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import org.apache.commons.lang3.StringUtils
 
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application) {
     private var username : String? = null
-
-    private var isGuest = true
 
     fun getUsername(): String? {
         return username
@@ -16,19 +15,15 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
         this.username = username
     }
 
-    fun isGuest(): Boolean {
-        return isGuest
-    }
-
-    fun setIsGuest(isGuest: Boolean) {
-        this.isGuest = isGuest
-    }
-
     open fun getNavbarTitle(): String? {
         return null
     }
 
     open fun getMenuTitle(): String? {
         return null
+    }
+
+    fun isGuest(): Boolean {
+        return StringUtils.isNotEmpty(username)
     }
 }

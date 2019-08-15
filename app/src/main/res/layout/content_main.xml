@@ -2,13 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center">
+              android:layout_height="match_parent">
 
-    <TextView
-            style="@style/LoginTitle"
-            android:layout_width="wrap_content"
+    <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+    </androidx.viewpager.widget.ViewPager>
+
+    <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_in"/>
+            android:id="@+id/tablayout"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:gravity="bottom">
+    </com.google.android.material.tabs.TabLayout>
 
 </LinearLayout>

@@ -1,16 +1,28 @@
 package com.learning.ramovies.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.learning.ramovies.R
 import com.learning.ramovies.base.BaseActivity
 import com.learning.ramovies.login.LoginActivity
-import com.learning.ramovies.util.PARAM_HAS_ENTERED
-import com.learning.ramovies.util.PARAM_IS_GUEST
-import com.learning.ramovies.util.PARAM_UN
+import com.learning.ramovies.util.UserConstants
+import kotlinx.android.synthetic.main.content_main.*
+import org.apache.commons.lang3.StringUtils
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : BaseActivity() {
+    private val tabIcons: IntArray = intArrayOf(
+        R.mipmap.home,
+        R.mipmap.trending,
+        R.mipmap.dumpster,
+        R.mipmap.followed,
+        R.mipmap.history
+    )
+
     private lateinit var mainActivityViewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,19 +30,17 @@ class MainActivity : BaseActivity() {
 
         mainActivityViewModel = getViewModel()
 
-        if(intent.getBooleanExtra(PARAM_HAS_ENTERED, false)) {
-            mainActivityViewModel.setUsername(intent.getStringExtra(PARAM_UN))
-            mainActivityViewModel.setIsGuest(intent.getBooleanExtra(PARAM_IS_GUEST, true))
-        } else {
-            launchNewActivity(LoginActivity::class.java)
+        if(savedInstanceState == null) {
+            if (intent.getBooleanExtra(UserConstants.PARAM_HAS_ENTERED, false)) {
+                mainActivityViewModel.setUsername(intent.getStringExtra(UserConstants.PARAM_UN))
+            } else {
+                launchNewActivity(LoginActivity::class.java)
+            }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
 
         updateToolbarTitle(mainActivityViewModel.getNavbarTitle())
-        updateMenu(mainActivityViewModel.getMenuTitle(), mainActivityViewModel.isGuest())
+        updateMenu(StringUtils.isNotEmpty(mainActivityViewModel.getUsername()))
+        setupPagerAdapter()
     }
 
     /*
@@ -46,5 +56,36 @@ class MainActivity : BaseActivity() {
 
     override fun getHeaderTitle(): String? {
         return mainActivityViewModel.getNavbarTitle()
+    }
+
+    private fun setupPagerAdapter(){
+        val viewPager = pager as ViewPager
+        val duckPagerAdapter = MainPagerAdapter(supportFragmentManager)
+        viewPager.adapter = duckPagerAdapter
+        val tabLayout = tablayout as TabLayout
+        tabLayout.setupWithViewPager(viewPager)
+
+        setupTabIcons()
+    }
+
+    private fun setupTabIcons() {
+        for(i in 0..tablayout.tabCount) {
+            if(i < tabIcons.size) {
+                tablayout.getTabAt(i)?.icon = getDrawable(tabIcons[i])
+            }
+        }
+    }
+
+    companion object {
+        private const val PARAM_HAS_ENTERED = "PARAM_HAS_ENTERED"
+        private const val PARAM_UN = "PARAM_UN"
+
+        fun createIntent(userName: String?, context: Context): Intent {
+            val intent = Intent(context, MainActivity::class.java)
+            intent.putExtra(PARAM_HAS_ENTERED, true)
+            intent.putExtra(PARAM_UN, userName)
+
+            return intent
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -21,6 +22,7 @@ import com.learning.ramovies.login.LoginActivity
 import com.learning.ramovies.main.MainActivity
 import kotlinx.android.synthetic.main.app_bar_layout.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.nav_header.*
 import org.apache.commons.lang3.StringUtils
 import timber.log.Timber
 
@@ -51,6 +53,15 @@ abstract class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationIte
             }
 
             val searchView = findViewById<SearchView>(R.id.searchView)
+            searchView.setOnSearchClickListener {
+                nav_title_tv.visibility = View.GONE
+            }
+
+            searchView.setOnCloseListener {
+                nav_title_tv.visibility = View.VISIBLE
+                false
+            }
+
             searchView.findViewById<ImageView>(R.id.search_button).setColorFilter(Color.WHITE)
 
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -72,9 +83,8 @@ abstract class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationIte
         }
     }
 
-    protected fun updateMenu(title: String?, isGuest: Boolean) {
-        if(!isGuest) {
-            currentActivity().findViewById<TextView>(R.id.header_title).text = title
+    protected fun updateMenu(isLoggedIn: Boolean) {
+        if(isLoggedIn) {
             menu.findItem(R.id.return_to_login).title = this.getString(R.string.sign_out)
         }
     }
@@ -90,7 +100,6 @@ abstract class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationIte
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
-
         return true
     }
 
@@ -140,9 +149,5 @@ abstract class BaseActivity: AppCompatActivity(), NavigationView.OnNavigationIte
 
     protected fun launchNewActivity(@NonNull newActivity: Intent) {
         this.startActivity(newActivity)
-    }
-
-    protected open fun isGuest(): Boolean {
-        return true
     }
 }
