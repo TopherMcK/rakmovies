@@ -1,8 +1,5 @@
 package com.learning.ramovies.login
 
-import android.graphics.drawable.Drawable
-import android.widget.ImageView
-import com.learning.ramovies.R
 import com.learning.ramovies.main.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.junit.Assert.assertEquals
