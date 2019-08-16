@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.learning.ramovies.R
-import com.learning.ramovies.base.BaseActivity
+import com.learning.ramovies.base.BaseSearchBarActivity
 import com.learning.ramovies.login.LoginActivity
 import com.learning.ramovies.util.UserConstants
 import kotlinx.android.synthetic.main.content_main.*
 import org.apache.commons.lang3.StringUtils
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseSearchBarActivity() {
     private val tabIcons: IntArray = intArrayOf(
         R.mipmap.home,
         R.mipmap.trending,
@@ -52,10 +52,6 @@ class MainActivity : BaseActivity() {
 
     override fun currentActivity(): AppCompatActivity {
         return this
-    }
-
-    override fun getHeaderTitle(): String? {
-        return mainActivityViewModel.getNavbarTitle()
     }
 
     private fun setupPagerAdapter(){

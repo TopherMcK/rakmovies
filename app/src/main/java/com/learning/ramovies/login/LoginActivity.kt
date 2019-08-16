@@ -102,8 +102,4 @@ class LoginActivity : BaseActivity() {
     override fun currentActivity(): AppCompatActivity {
         return this
     }
-
-    override fun shouldUseNav(): Boolean {
-        return false
-    }
 }
