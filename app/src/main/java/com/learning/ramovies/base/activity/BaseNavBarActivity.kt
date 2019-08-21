@@ -1,4 +1,4 @@
-package com.learning.ramovies.base
+package com.learning.ramovies.base.activity
 
 import android.os.Bundle
 import android.view.Menu
@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.learning.ramovies.R
+import com.learning.ramovies.base.activity.BaseActivity
 import kotlinx.android.synthetic.main.app_bar_layout.*
 import org.apache.commons.lang3.StringUtils
 

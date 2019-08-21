@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.learning.ramovies.R
-import com.learning.ramovies.base.BaseActivity
+import com.learning.ramovies.base.activity.BaseActivity
 import com.learning.ramovies.main.MainActivity
 import org.apache.commons.lang3.StringUtils
 import org.koin.androidx.viewmodel.ext.android.getViewModel

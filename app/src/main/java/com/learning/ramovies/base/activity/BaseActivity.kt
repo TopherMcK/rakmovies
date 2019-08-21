@@ -1,4 +1,4 @@
-package com.learning.ramovies.base
+package com.learning.ramovies.base.activity
 
 import android.content.Intent
 import android.os.Bundle

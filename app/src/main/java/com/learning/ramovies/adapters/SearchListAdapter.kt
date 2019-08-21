@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.learning.ramovies.R
+import com.learning.ramovies.models.ombd.Movie
+import timber.log.Timber
 
-class SearchListAdapter(private var context: Context, private var searchItems: List<String>) : RecyclerView.Adapter<SearchListAdapter.SearchViewHolder>(){
+class SearchListAdapter(private val context: Context, private var movies: List<Movie>) : RecyclerView.Adapter<SearchListAdapter.SearchViewHolder>(){
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
@@ -17,13 +19,19 @@ class SearchListAdapter(private var context: Context, private var searchItems: L
     }
 
     override fun getItemCount(): Int {
-        return searchItems.size
+        return movies.size
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
+//        if(holder.searchItemText != null) {
+            holder.searchItemText.text = movies.get(position).Title
+//        } else {
+//            Timber.e("text was null")
+//        }
     }
 
 
     class SearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val searchItemText: TextView = view.findViewById(R.id.search_item_text)
     }
 }

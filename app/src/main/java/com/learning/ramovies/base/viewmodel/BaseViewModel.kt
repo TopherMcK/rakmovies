@@ -1,4 +1,4 @@
-package com.learning.ramovies.base
+package com.learning.ramovies.base.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -21,9 +21,5 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
 
     open fun getMenuTitle(): String? {
         return null
-    }
-
-    fun isGuest(): Boolean {
-        return StringUtils.isNotEmpty(username)
     }
 }

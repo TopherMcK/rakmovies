@@ -1,7 +1,7 @@
 package com.learning.ramovies.login
 
 import android.app.Application
-import com.learning.ramovies.base.BaseViewModel
+import com.learning.ramovies.base.viewmodel.BaseViewModel
 import com.learning.ramovies.util.LoginUtil
 
 class LoginViewModel(appContext: Application, private val loginUtil: LoginUtil) : BaseViewModel(appContext) {
