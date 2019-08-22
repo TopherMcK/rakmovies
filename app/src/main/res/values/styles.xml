@@ -23,7 +23,25 @@
         <item name="android:textSize">60sp</item>
     </style>
     <style name="LoginTV" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">@color/grayText</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/blockbusterBlue</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="LoginButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/login_button</item>
+        <item name="android:textColor">@color/login_button_text</item>
+        <item name="android:layout_width">185dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    <style name="LoginInput">
+        <item name="android:layout_width">185dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/login_input_background</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 </resources>

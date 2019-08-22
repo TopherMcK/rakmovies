@@ -1,7 +1,7 @@
 package com.learning.ramovies.rest.di
 
 import com.learning.ramovies.rest.SearchRepo
-import com.learning.ramovies.util.RestConstants
+import com.learning.ramovies.constants.RestConstants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

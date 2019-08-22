@@ -1,7 +1,7 @@
 package com.learning.ramovies.rest
 
 import com.learning.ramovies.models.ombd.search.SearchModel
-import com.learning.ramovies.util.RestConstants
+import com.learning.ramovies.constants.RestConstants
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET

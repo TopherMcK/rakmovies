@@ -8,9 +8,8 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.learning.ramovies.R
 import com.learning.ramovies.base.activity.BaseSearchBarActivity
-import com.learning.ramovies.base.viewmodel.BaseSearchViewModel
 import com.learning.ramovies.login.LoginActivity
-import com.learning.ramovies.util.UserConstants
+import com.learning.ramovies.constants.UserConstants
 import kotlinx.android.synthetic.main.content_main.*
 import org.apache.commons.lang3.StringUtils
 import org.koin.androidx.viewmodel.ext.android.getViewModel

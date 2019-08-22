@@ -1,4 +1,4 @@
-package com.learning.ramovies.util
+package com.learning.ramovies.constants
 
 object RestConstants {
     const val OMDB_URL = "http://www.omdbapi.com"

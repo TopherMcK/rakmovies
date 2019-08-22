@@ -19,6 +19,7 @@ abstract class BaseNavBarActivity : BaseActivity(), NavigationView.OnNavigationI
         super.onCreate(savedInstanceState)
 
         updatedNavBar()
+        setToBlockbusterFont(nav_title_tv)
     }
 
     private fun updatedNavBar() {

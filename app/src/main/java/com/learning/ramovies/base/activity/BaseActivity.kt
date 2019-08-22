@@ -2,15 +2,20 @@ package com.learning.ramovies.base.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.learning.ramovies.R
 import com.learning.ramovies.login.LoginActivity
 import com.learning.ramovies.main.MainActivity
+import com.learning.ramovies.util.CustomFontUtil
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 
 abstract class BaseActivity: AppCompatActivity() {
+    private val customFontUtil: CustomFontUtil by inject { parametersOf(this) }
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,5 +46,9 @@ abstract class BaseActivity: AppCompatActivity() {
 
     protected fun launchNewActivity(@NonNull newActivity: Intent) {
         this.startActivity(newActivity)
+    }
+
+    protected fun setToBlockbusterFont(@NonNull textView: TextView) {
+        customFontUtil.setToBlockbusterFont(textView)
     }
 }

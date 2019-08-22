@@ -1,23 +1,34 @@
 package com.learning.ramovies.login
 
+import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.button.MaterialButton
 import com.learning.ramovies.R
 import com.learning.ramovies.base.activity.BaseActivity
 import com.learning.ramovies.main.MainActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import org.apache.commons.lang3.StringUtils
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class LoginActivity : BaseActivity() {
     private lateinit var loginViewModel: LoginViewModel
 
-    private lateinit var signInBtn: Button
+    private lateinit var signInBtn: MaterialButton
     private lateinit var unET : EditText
     private lateinit var pwET : EditText
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setToBlockbusterFont(textView = usernameLabel)
+        setToBlockbusterFont(textView = passwordLabel)
+        setToBlockbusterFont(textView = justAnOr)
+    }
 
     override fun onResume() {
         super.onResume()
@@ -60,7 +71,6 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun setupButtons() {
-
         signInBtn = findViewById(R.id.signInBtn)
         signInBtn.setOnClickListener {
             sendToMain()
@@ -70,13 +80,14 @@ class LoginActivity : BaseActivity() {
         skpButton.setOnClickListener {
             sendToMain()
         }
+
+        setToBlockbusterFont(signInBtn)
+        setToBlockbusterFont(skpButton)
+        updateSignInBtn()
     }
 
     private fun updateSignInBtn() {
             signInBtn.isEnabled = loginViewModel.hasValidSubmission()
-
-            val bgColor: Int = if (loginViewModel.hasValidSubmission()) R.color.ltBlue else R.color.ltGray
-            signInBtn.background = this.getDrawable(bgColor)
     }
 
     private fun sendToMain() {
@@ -92,9 +103,6 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    /*
-     Inherited methods
-      */
     override fun layoutRes(): Int {
         return R.layout.activity_login
     }
