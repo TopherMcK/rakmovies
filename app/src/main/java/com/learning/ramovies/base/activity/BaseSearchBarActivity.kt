@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.learning.ramovies.R
@@ -36,6 +37,8 @@ abstract class BaseSearchBarActivity : BaseNavBarActivity(), SearchView.OnQueryT
 
         searchView.setOnCloseListener {
             nav_title_tv.visibility = View.VISIBLE
+            val emptyMovies: List<Movie> = ArrayList()
+            diplayResults(emptyMovies)
             false
         }
 
@@ -57,8 +60,13 @@ abstract class BaseSearchBarActivity : BaseNavBarActivity(), SearchView.OnQueryT
     }
 
     private fun diplayResults(titles: List<Movie>) {
+        val layoutManager = LinearLayoutManager(this)
+
         val recyclerView = findViewById<RecyclerView>(R.id.search_rv)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+
+        val dividerItemDecoration = DividerItemDecoration(recyclerView.context, layoutManager.orientation)
+        recyclerView.addItemDecoration(dividerItemDecoration)
         recyclerViewAdapter = SearchListAdapter(this, titles)
         recyclerView.adapter = recyclerViewAdapter
     }

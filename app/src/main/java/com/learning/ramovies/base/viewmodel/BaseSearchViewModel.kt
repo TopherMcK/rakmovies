@@ -31,7 +31,7 @@ abstract class BaseSearchViewModel(application: Application, private val searchR
         if(response.code() == 200 && response.body() != null && CollectionUtils.isNotEmpty(response.body()?.Search)) {
             searchLiveData.postValue(response.body()!!.Search)
         } else {
-            Timber.e("Error in Search Response : %s", response.errorBody());
+            Timber.w("Error in Search Response : %s", response.errorBody());
         }
     }
 

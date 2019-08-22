@@ -29,7 +29,8 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/search_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#fff">
         </androidx.recyclerview.widget.RecyclerView>
 
     </com.google.android.material.appbar.AppBarLayout>

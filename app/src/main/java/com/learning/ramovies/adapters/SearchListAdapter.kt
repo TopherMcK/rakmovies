@@ -23,11 +23,7 @@ class SearchListAdapter(private val context: Context, private var movies: List<M
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-//        if(holder.searchItemText != null) {
             holder.searchItemText.text = movies.get(position).Title
-//        } else {
-//            Timber.e("text was null")
-//        }
     }
 
 
