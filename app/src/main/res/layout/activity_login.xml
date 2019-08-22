@@ -18,7 +18,7 @@
                 <ImageView
                         android:layout_gravity="center"
                         android:id="@+id/storefrontIV"
-                        android:src="@mipmap/logo_backup"
+                        android:src="@mipmap/logo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
